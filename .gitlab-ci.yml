@@ -9,14 +9,13 @@ build:
 " > ~/.ssh/known_hosts'
     - chmod 644 ~/.ssh/known_hosts
     - 'scp -r -P4242  fedora-repo@fedora.autonomia.digital:packages/upload/f31/golang-github-gotk3-devel*.rpm .'
-    - rpm -i golang-github-gotk3-devel*.rpm
+    - rpm -ivh golang-github-gotk3-devel*.rpm
 
   script:
     - git clone https://github.com/coyim/gotk3adapter.git
     - cd gotk3adapter
     - git checkout 8ad62a930093c5c48a13619223885d6ac3418bb0
     - cd ..
-    - tar zcf grumble-c109af8d88b4b9cb77afe1f18572c66027cf8c0b.tar.gz grumble-c109af8d88b4b9cb77afe1f18572c66027cf8c0b/
     - tar zcf gotk3adapter-8ad62a930093c5c48a13619223885d6ac3418bb0.tar.gz gotk3adapter-8ad62a930093c5c48a13619223885d6ac3418bb0/
     - mkdir f30 f31
     - fedpkg --release f30 local
