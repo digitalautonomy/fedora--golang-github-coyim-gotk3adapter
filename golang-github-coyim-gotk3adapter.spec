@@ -3,7 +3,7 @@
 
 # https://github.com/coyim/gotk3adapter
 %global goipath         github.com/coyim/gotk3adapter
-%global commit          596a6275cb8ab965e0f12d8ae9afaf4b3a0edfc8
+%global commit          728d69a7102fc174d4d7ef16eaf527e2601f0c69
 
 %gometa
 
@@ -47,7 +47,7 @@ BuildRequires:  golang(github.com/gotk3/gotk3/pango)
 %gopkgfiles
 
 %changelog
-* Mon Mar 16 12:21:32 -05 2020 rafael <rafael@autonomia.digital> - 0-0.2.20200316git596a627
-- Update to git version 596a6275cb8ab965e0f12d8ae9afaf4b3a0edfc8
+* Mon Apr 13 11:14:32 -05 2020 rafael <rafael@autonomia.digital> - 0-0.2.20200413git596a627
+- Update to git version 728d69a7102fc174d4d7ef16eaf527e2601f0c69
 * Mon Mar 16 12:21:32 -05 2020 rafael <rafael@autonomia.digital> - 0-0.1.20200316git8ad62a9
 - Initial package

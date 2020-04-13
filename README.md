@@ -3,9 +3,9 @@ Spec files uploaded to Fedora's repo auto download the source code. I would fix 
 
 ```
 git clone https://github.com/coyim/gotk3adapter.git
-mv gotk3adapter gotk3adapter-596a6275cb8ab965e0f12d8ae9afaf4b3a0edfc8
-tar zcf gotk3adapter-596a6275cb8ab965e0f12d8ae9afaf4b3a0edfc8.tar.gz gotk3adapter-596a6275cb8ab965e0f12d8ae9afaf4b3a0edfc8/
-rm -rf gotk3adapter-596a6275cb8ab965e0f12d8ae9afaf4b3a0edfc8
+mv gotk3adapter gotk3adapter-728d69a7102fc174d4d7ef16eaf527e2601f0c69
+tar zcf gotk3adapter-728d69a7102fc174d4d7ef16eaf527e2601f0c69.tar.gz gotk3adapter-728d69a7102fc174d4d7ef16eaf527e2601f0c69/
+rm -rf gotk3adapter-728d69a7102fc174d4d7ef16eaf527e2601f0c69
 ```
 
 To build this package you would need to install the `golang-github-gotk3-devel` package.
