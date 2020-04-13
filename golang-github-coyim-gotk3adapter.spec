@@ -3,7 +3,7 @@
 
 # https://github.com/coyim/gotk3adapter
 %global goipath         github.com/coyim/gotk3adapter
-%global commit          8ad62a930093c5c48a13619223885d6ac3418bb0
+%global commit          596a6275cb8ab965e0f12d8ae9afaf4b3a0edfc8
 
 %gometa
 
@@ -15,7 +15,7 @@ Contains adapters and interfaces for gotk3 in order to make testing possible.}
 
 Name:           %{goname}
 Version:        0
-Release:        0.1%{?dist}
+Release:        0.2%{?dist}
 Summary:        Contains adapters and interfaces for gotk3 in order to make testing possible
 
 License:        GPL-3.0-only
@@ -47,6 +47,7 @@ BuildRequires:  golang(github.com/gotk3/gotk3/pango)
 %gopkgfiles
 
 %changelog
+* Mon Mar 16 12:21:32 -05 2020 rafael <rafael@autonomia.digital> - 0-0.2.20200316git596a627
+- Update to git version 596a6275cb8ab965e0f12d8ae9afaf4b3a0edfc8
 * Mon Mar 16 12:21:32 -05 2020 rafael <rafael@autonomia.digital> - 0-0.1.20200316git8ad62a9
 - Initial package
-

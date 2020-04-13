@@ -13,10 +13,10 @@ build:
   script:
     - git clone https://github.com/coyim/gotk3adapter.git
     - cd gotk3adapter
-    - git checkout 8ad62a930093c5c48a13619223885d6ac3418bb0
+    - git checkout 596a6275cb8ab965e0f12d8ae9afaf4b3a0edfc8
     - cd ..
-    - mv gotk3adapter gotk3adapter-8ad62a930093c5c48a13619223885d6ac3418bb0
-    - tar zcf gotk3adapter-8ad62a930093c5c48a13619223885d6ac3418bb0.tar.gz gotk3adapter-8ad62a930093c5c48a13619223885d6ac3418bb0/
+    - mv gotk3adapter gotk3adapter-596a6275cb8ab965e0f12d8ae9afaf4b3a0edfc8
+    - tar zcf gotk3adapter-596a6275cb8ab965e0f12d8ae9afaf4b3a0edfc8.tar.gz gotk3adapter-596a6275cb8ab965e0f12d8ae9afaf4b3a0edfc8/
     - mkdir f30 f31
     - fedpkg --release f30 local
     - 'find . -name "*fc30*.rpm" -exec mv {} f30 \;'
