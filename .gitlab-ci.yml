@@ -2,31 +2,21 @@ build:
   stage: build
   image: rbonifaz/wahay-rpm-build:latest
   before_script:
+    - dnf install -y xorg-x11-server-Xvfb
     - "eval $(ssh-agent -s)"
     - 'ssh-add <(echo "$FEDORA_PACKAGING_PRIVATE_KEY")'
     - mkdir -p ~/.ssh; chmod 700 ~/.ssh
     - 'echo -e "[fedora.autonomia.digital]:4243,[185.108.78.22]:4243 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFE8IPu1LfB0ePyhgBFTyzXRNBZUiYa1ZaSnkFb746r3MgZQlfMhfxdMtrY3bKoiQ4i+HEUTCUN4BJ5n2PMdGz4=" > ~/.ssh/known_hosts'
     - chmod 644 ~/.ssh/known_hosts
-    - 'scp -r -P4243  fedora-repo@fedora.autonomia.digital:packages/upload/f31/golang-github-gotk3-devel*.rpm .'
+    - 'scp -r -P4243  fedora-repo@fedora.autonomia.digital:packages/upload/f38/golang-github-gotk3-devel*.rpm .'
+    - 'scp -r -P4243  fedora-repo@fedora.autonomia.digital:packages/upload/f38/golang-github-coyim-gotk3extra-devel*.rpm .'
     - rpm -ivh golang-github-gotk3-devel*.rpm
+    - rpm -ivh golang-github-coyim-gotk3extra-devel*.rpm
 
   script:
-    - git clone https://github.com/coyim/gotk3adapter.git
-    - cd gotk3adapter
-    - git checkout 728d69a7102fc174d4d7ef16eaf527e2601f0c69
+    - git clone https://github.com/coyim/gotk3adapter.git gotk3adapter-0.0.2
+    - cd gotk3adapter-0.0.2
+    - git checkout tags/v0.0.2
     - cd ..
-    - mv gotk3adapter gotk3adapter-728d69a7102fc174d4d7ef16eaf527e2601f0c69
-    - tar zcf gotk3adapter-728d69a7102fc174d4d7ef16eaf527e2601f0c69.tar.gz gotk3adapter-728d69a7102fc174d4d7ef16eaf527e2601f0c69/
-    - mkdir f30 f31
-    - fedpkg --release f30 local
-    - 'find . -name "*fc30*.rpm" -exec mv {} f30 \;'
-    - fedpkg --release f31 local
-    - 'find . -name "*fc31*.rpm" -exec mv {} f31 \;'
-    - 'scp -r -P4243 f30/* fedora-repo@fedora.autonomia.digital:packages/upload/f30'
-    - 'scp -r -P4243 f31/* fedora-repo@fedora.autonomia.digital:packages/upload/f31'
-
-
-  artifacts:
-    paths:
-      - 'f30/*.rpm'
-      - 'f31/*.rpm'
+    - tar zcf gotk3adapter-0.0.2.tar.gz gotk3adapter-0.0.2/
+    - ./build_all.sh f30 f31 f32 f33 f34 f35 f36 f37 f38

@@ -3,7 +3,7 @@
 
 # https://github.com/coyim/gotk3adapter
 %global goipath         github.com/coyim/gotk3adapter
-%global commit          728d69a7102fc174d4d7ef16eaf527e2601f0c69
+Version:                0.0.2
 
 %gometa
 
@@ -14,8 +14,7 @@ Contains adapters and interfaces for gotk3 in order to make testing possible.}
 %global godocs          README.md
 
 Name:           %{goname}
-Version:        0
-Release:        0.2%{?dist}
+Release:        0.1%{?dist}
 Summary:        Contains adapters and interfaces for gotk3 in order to make testing possible
 
 License:        GPL-3.0-only
@@ -27,6 +26,7 @@ BuildRequires:  golang(github.com/gotk3/gotk3/gdk)
 BuildRequires:  golang(github.com/gotk3/gotk3/glib)
 BuildRequires:  golang(github.com/gotk3/gotk3/gtk)
 BuildRequires:  golang(github.com/gotk3/gotk3/pango)
+BuildRequires:  golang(github.com/coyim/gotk3extra)
 
 %description
 %{common_description}
@@ -39,14 +39,20 @@ BuildRequires:  golang(github.com/gotk3/gotk3/pango)
 %install
 %gopkginstall
 
+
 %if %{with check}
 %check
+Xvfb :99 &
+export DISPLAY=:99
+export GOFLAGS="-tags=gtk_3_18,glib_2_66"
 %gocheck
 %endif
 
 %gopkgfiles
 
 %changelog
+* Sun Apr 30 11:00:00 -05 2023 CAD <fedora@autonomia.digital> - 0.0.2-1
+- Update to released version.
 * Mon Apr 13 11:14:32 -05 2020 rafael <rafael@autonomia.digital> - 0-0.2.20200413git596a627
 - Update to git version 728d69a7102fc174d4d7ef16eaf527e2601f0c69
 * Mon Mar 16 12:21:32 -05 2020 rafael <rafael@autonomia.digital> - 0-0.1.20200316git8ad62a9
